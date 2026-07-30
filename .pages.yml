@@ -1,6 +1,8 @@
 media:
   input: media
   output: /media
+  rename: safe
+  extensions: [jpg, jpeg, png, webp]
 
 content:
   - name: works
@@ -8,8 +10,10 @@ content:
     type: collection
     path: _works
     filename: "{fields.slug}.md"
+
     view:
       fields: [title, date, category, featured]
+
     fields:
       - name: title
         label: Title
@@ -40,8 +44,18 @@ content:
             - Film
             - Mixed media
             - Drawing
+            - Painting
             - Writing
             - Other
+
+      - name: summary
+        label: Short summary
+        type: text
+        required: true
+        description: One or two sentences shown with the work on listing pages.
+        options:
+          minlength: 10
+          maxlength: 300
 
       - name: cover
         label: Cover image
@@ -50,7 +64,12 @@ content:
         options:
           path: works
           extensions: [jpg, jpeg, png, webp]
-          rename: true
+
+      - name: cover_alt
+        label: Cover image description
+        type: string
+        required: true
+        description: Briefly describe the image for visitors who cannot see it.
 
       - name: gallery
         label: Gallery
@@ -61,7 +80,6 @@ content:
             max: 20
           unique: true
           extensions: [jpg, jpeg, png, webp]
-          rename: true
 
       - name: aparat
         label: Aparat video link
@@ -75,6 +93,7 @@ content:
       - name: body
         label: Description
         type: rich-text
+        required: true
         options:
           media: false
           format: markdown
@@ -85,8 +104,10 @@ content:
     type: collection
     path: _notes
     filename: "{fields.slug}.md"
+
     view:
       fields: [title, date]
+
     fields:
       - name: title
         label: Title
@@ -97,7 +118,7 @@ content:
         label: URL name
         type: string
         required: true
-        description: Use lowercase English letters, numbers, and hyphens only.
+        description: Use lowercase English letters, numbers, and hyphens only. Example unfinished-things
         pattern:
           regex: "^[a-z0-9-]+$"
           message: Use lowercase English letters, numbers, and hyphens only.
@@ -108,12 +129,16 @@ content:
         required: true
 
       - name: image
-        label: Image
+        label: Optional image
         type: image
         options:
           path: notes
           extensions: [jpg, jpeg, png, webp]
-          rename: true
+
+      - name: image_alt
+        label: Image description
+        type: string
+        description: If you add an image, briefly describe what it shows.
 
       - name: body
         label: Text
