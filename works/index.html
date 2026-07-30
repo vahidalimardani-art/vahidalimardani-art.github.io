@@ -2,13 +2,5 @@
 layout: default
 title: آثار
 ---
-<header class="archive-hero page-shell"><p class="overline">آرشیو</p><h1>آثار</h1><p>مجموعه‌ای از تصویرها، فیلم‌ها و تجربه‌های هنری</p></header>
-<section class="archive-grid wide-shell">
-{% assign works = site.works | sort: 'date' | reverse %}
-{% for work in works %}
-<article class="archive-card archive-card-{{ forloop.index | modulo: 4 }}"><a href="{{ work.url | relative_url }}">
-  {% if work.cover %}<img src="{{ work.cover | relative_url }}" alt="{{ work.cover_alt | escape }}" loading="lazy">{% endif %}
-  <div class="archive-copy"><p class="card-meta">{{ work.category }}{% if work.date %} · {{ work.date | date: '%Y' }}{% endif %}</p><h2>{{ work.title }}</h2><p>{{ work.summary }}</p></div>
-</a></article>
-{% else %}<p class="empty-state">هنوز اثری منتشر نشده است.</p>{% endfor %}
-</section>
+<header class="archive-head wrap-wide"><span>آرشیو</span><h1>آثار</h1></header>
+<section class="works-grid wrap-wide">{% assign works=site.works | sort:'date' | reverse %}{% for work in works %}<article><a href="{{ work.url | relative_url }}">{% if work.cover %}<img src="{{ work.cover | relative_url }}" alt="{{ work.cover_alt | escape }}" loading="lazy">{% endif %}<div class="card-copy"><small>{{ work.category }}{% if work.date %} · {{ work.date | date:'%Y' }}{% endif %}</small><h2>{{ work.title }}</h2><p>{{ work.summary }}</p></div></a></article>{% else %}<p class="empty">هنوز اثری منتشر نشده است.</p>{% endfor %}</section>

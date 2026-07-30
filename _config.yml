@@ -18,7 +18,4 @@ defaults:
     values: { layout: work }
   - scope: { path: "", type: notes }
     values: { layout: note }
-exclude:
-  - README.md
-  - INSTALL.md
-  - CLEANUP.md
+exclude: [README.md, INSTALL.md, CLEANUP.md]
