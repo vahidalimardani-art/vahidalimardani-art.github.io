@@ -1,0 +1,31 @@
+title: Vahid Alimardani
+description: Works, images, films, and notes.
+url: "https://vahidalimardani-art.github.io"
+baseurl: ""
+
+markdown: kramdown
+
+collections:
+  works:
+    output: true
+    permalink: /works/:name/
+
+  notes:
+    output: true
+    permalink: /notes/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: works
+    values:
+      layout: work
+
+  - scope:
+      path: ""
+      type: notes
+    values:
+      layout: note
+
+exclude:
+  - README.md
