@@ -6,7 +6,7 @@ content:
   - name: works
     label: Works
     type: collection
-    path: content/works
+    path: _works
     filename: "{fields.slug}.md"
     view:
       fields: [title, date, category, featured]
@@ -83,7 +83,7 @@ content:
   - name: notes
     label: Notes
     type: collection
-    path: content/notes
+    path: _notes
     filename: "{fields.slug}.md"
     view:
       fields: [title, date]
