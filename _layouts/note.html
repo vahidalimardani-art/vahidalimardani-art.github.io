@@ -1,9 +1,0 @@
----
-layout: default
----
-<article class="note wrap-reading">
-  <header>{% if page.date %}<time>{{ page.date | date: '%Y/%m/%d' }}</time>{% endif %}<h1>{{ page.title }}</h1></header>
-  {% if page.image %}<figure><img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}"></figure>{% endif %}
-  <section class="prose">{{ content }}</section>
-  <a class="back" href="{{ '/notes/' | relative_url }}">همه یادداشت‌ها</a>
-</article>
