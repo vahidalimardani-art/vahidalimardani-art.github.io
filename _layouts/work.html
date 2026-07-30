@@ -28,6 +28,7 @@
       <header class="work-header">
         <p class="work-meta">
           {{ page.category }}
+
           {% if page.date %}
             <span aria-hidden="true"> · </span>
             <time datetime="{{ page.date | date: '%Y-%m-%d' }}">
@@ -69,7 +70,7 @@
         <section class="work-video">
           <h2>Film</h2>
 
-          {{ page.aparat }}
+          {{ page.aparat | escape }}
             Watch on Aparat
           </a>
         </section>
