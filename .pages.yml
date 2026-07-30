@@ -1,0 +1,125 @@
+media:
+  input: media
+  output: /media
+
+content:
+  - name: works
+    label: Works
+    type: collection
+    path: content/works
+    filename: "{fields.slug}.md"
+    view:
+      fields: [title, date, category, featured]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: slug
+        label: URL name
+        type: string
+        required: true
+        description: Use lowercase English letters, numbers, and hyphens only. Example empty-rooms
+        pattern:
+          regex: "^[a-z0-9-]+$"
+          message: Use lowercase English letters, numbers, and hyphens only.
+
+      - name: date
+        label: Date
+        type: date
+        required: true
+
+      - name: category
+        label: Category
+        type: select
+        required: true
+        options:
+          values:
+            - Photography
+            - Film
+            - Mixed media
+            - Drawing
+            - Writing
+            - Other
+
+      - name: cover
+        label: Cover image
+        type: image
+        required: true
+        options:
+          path: works
+          extensions: [jpg, jpeg, png, webp]
+          rename: true
+
+      - name: gallery
+        label: Gallery
+        type: image
+        options:
+          path: works
+          multiple:
+            max: 20
+          unique: true
+          extensions: [jpg, jpeg, png, webp]
+          rename: true
+
+      - name: aparat
+        label: Aparat video link
+        type: string
+        description: Optional. Paste the full Aparat video address.
+
+      - name: featured
+        label: Feature on home page
+        type: boolean
+
+      - name: body
+        label: Description
+        type: rich-text
+        options:
+          media: false
+          format: markdown
+          switcher: false
+
+  - name: notes
+    label: Notes
+    type: collection
+    path: content/notes
+    filename: "{fields.slug}.md"
+    view:
+      fields: [title, date]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: slug
+        label: URL name
+        type: string
+        required: true
+        description: Use lowercase English letters, numbers, and hyphens only.
+        pattern:
+          regex: "^[a-z0-9-]+$"
+          message: Use lowercase English letters, numbers, and hyphens only.
+
+      - name: date
+        label: Date
+        type: date
+        required: true
+
+      - name: image
+        label: Image
+        type: image
+        options:
+          path: notes
+          extensions: [jpg, jpeg, png, webp]
+          rename: true
+
+      - name: body
+        label: Text
+        type: rich-text
+        required: true
+        options:
+          media: false
+          format: markdown
+          switcher: false
