@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.summary | escape }}">
+
+  {{ '/assets/css/style.css' | relative_url }}
+</head>
+
+<body>
+  <header class="site-header">
+    {{ '/' | relative_url }}
+      {{ site.title }}
+    </a>
+
+    <nav aria-label="Main navigation">
+      {{ '/works/' | relative_url }}Works</a>
+      {{ '/notes/' | relative_url }}Notes</a>
+      {{ '/about/' | relative_url }}About</a>
+    </nav>
+  </header>
+
+  <main class="work-page">
+    <article>
+      <header class="work-header">
+        <p class="work-meta">
+          {{ page.category }}
+          {% if page.date %}
+            <span aria-hidden="true"> · </span>
+            <time datetime="{{ page.date | date: '%Y-%m-%d' }}">
+              {{ page.date | date: "%Y" }}
+            </time>
+          {% endif %}
+        </p>
+
+        <h1>{{ page.title }}</h1>
+
+        {% if page.summary %}
+          <p class="work-summary">{{ page.summary }}</p>
+        {% endif %}
+      </header>
+
+      {% if page.cover %}
+        <figure class="work-cover">
+          {{ page.cover | relative_url }}
+        </figure>
+      {% endif %}
+
+      {% if content != empty %}
+        <section class="work-description">
+          {{ content }}
+        </section>
+      {% endif %}
+
+      {% if page.gallery %}
+        <section class="work-gallery" aria-label="Image gallery">
+          {% for image in page.gallery %}
+            <figure>
+              {{ image | relative_url }}
+            </figure>
+          {% endfor %}
+        </section>
+      {% endif %}
+
+      {% if page.aparat %}
+        <section class="work-video">
+          <h2>Film</h2>
+
+          {{ page.aparat }}
+            Watch on Aparat
+          </a>
+        </section>
+      {% endif %}
+    </article>
+
+    <nav class="back-link" aria-label="Return to works">
+      {{ '/works/' | relative_url }}← All works</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <p>© {{ site.time | date: "%Y" }} {{ site.title }}</p>
+  </footer>
+</body>
+</html>
