@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<div id="wrapper" class="subpage-wrapper">
+  <header id="header" class="site-nav">
+    <h1><a href="{{ '/' | relative_url }}"><strong>{{ site.title }}</strong></a></h1>
+    <nav><ul><li><a href="{{ '/works/' | relative_url }}">آثار</a></li><li><a href="{{ '/notes/' | relative_url }}">یادداشت‌ها</a></li><li><a href="{{ '/about/' | relative_url }}">درباره</a></li></ul></nav>
+  </header>
+  <main class="content-page">
+    <header class="content-head">
+      <p class="meta">{{ page.category }}{% if page.date %} · {{ page.date | date: '%Y' }}{% endif %}</p>
+      <h1>{{ page.title }}</h1>
+      {% if page.summary %}<p class="summary">{{ page.summary }}</p>{% endif %}
+    </header>
+    {% if page.cover %}<figure class="cover"><img src="{{ page.cover | relative_url }}" alt="{{ page.cover_alt | escape }}"></figure>{% endif %}
+    <section class="prose">{{ content }}</section>
+    {% if page.gallery %}<section class="work-gallery" aria-label="گالری تصاویر">{% for image in page.gallery %}<figure><img src="{{ image | relative_url }}" alt="تصویری دیگر از اثر {{ page.title | escape }}" loading="lazy"></figure>{% endfor %}</section>{% endif %}
+    {% assign video_url = page.video | default: page.aparat %}
+    <div class="page-actions">{% if video_url %}<a class="button primary" href="{{ video_url | escape }}" rel="noopener">تماشای ویدئو</a>{% endif %}<a href="{{ '/works/' | relative_url }}">همه آثار</a></div>
+  </main>
+</div>

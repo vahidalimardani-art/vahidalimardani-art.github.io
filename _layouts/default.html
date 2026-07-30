@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html lang="fa" dir="rtl">
+<head>
+  {% include header.html %}
+  <meta name="description" content="{{ page.description | default: site.description | strip_html | escape }}">
+  <link rel="stylesheet" href="{{ '/assets/css/vahid.css' | relative_url }}">
+</head>
+<body class="is-preload">
+  {{ content }}
+  {% include footer.html %}
+</body>
+</html>

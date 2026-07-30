@@ -1,0 +1,8 @@
+---
+layout: default
+title: آثار
+---
+<div id="wrapper">
+  <header id="header" class="site-nav"><h1><a href="{{ '/' | relative_url }}"><strong>{{ site.title }}</strong></a></h1><nav><ul><li><a href="{{ '/notes/' | relative_url }}">یادداشت‌ها</a></li><li><a href="{{ '/about/' | relative_url }}">درباره</a></li></ul></nav></header>
+  <div id="main">{% assign works=site.works | sort:'date' | reverse %}{% for work in works %}<article class="thumb"><a href="{{ work.cover | relative_url }}" class="image"><img src="{{ work.cover | relative_url }}" alt="{{ work.cover_alt | escape }}"></a><h2><a href="{{ work.url | relative_url }}">{{ work.title }}</a></h2><p>{{ work.summary }}</p></article>{% else %}<article class="thumb empty-thumb"><div class="empty-message">هنوز اثری منتشر نشده است.</div></article>{% endfor %}</div>
+</div>

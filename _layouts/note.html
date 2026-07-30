@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<div id="wrapper" class="subpage-wrapper">
+  <header id="header" class="site-nav">
+    <h1><a href="{{ '/' | relative_url }}"><strong>{{ site.title }}</strong></a></h1>
+    <nav><ul><li><a href="{{ '/works/' | relative_url }}">آثار</a></li><li><a href="{{ '/notes/' | relative_url }}">یادداشت‌ها</a></li><li><a href="{{ '/about/' | relative_url }}">درباره</a></li></ul></nav>
+  </header>
+  <main class="content-page reading-page">
+    <header class="content-head">{% if page.date %}<p class="meta">{{ page.date | date: '%Y/%m/%d' }}</p>{% endif %}<h1>{{ page.title }}</h1></header>
+    {% if page.image %}<figure class="cover"><img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}"></figure>{% endif %}
+    <section class="prose">{{ content }}</section>
+    <div class="page-actions"><a href="{{ '/notes/' | relative_url }}">همه یادداشت‌ها</a></div>
+  </main>
+</div>

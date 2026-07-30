@@ -6,13 +6,8 @@ media:
 
 settings:
   hide: true
-  commit:
-    identity: app
-    templates:
-      create: "انتشار {path}"
-      update: "به‌روزرسانی {path}"
-      delete: "حذف {path}"
-      rename: "تغییر نام {oldPath} به {newPath}"
+  content:
+    merge: true
 
 content:
   - name: works
@@ -28,7 +23,7 @@ content:
         label: نام فنی نشانی
         type: string
         required: true
-        description: فقط حروف کوچک انگلیسی، عدد و خط تیره. نمونه work-001
+        description: فقط حروف کوچک انگلیسی، عدد و خط تیره؛ مانند work-001
         pattern:
           regex: "^[a-z0-9-]+$"
           message: فقط حروف کوچک انگلیسی، عدد و خط تیره مجاز است.
@@ -43,20 +38,18 @@ content:
         label: معرفی کوتاه
         type: text
         required: true
-        description: یک یا دو جمله برای نمایش در صفحه اصلی و فهرست آثار.
+        description: یک یا دو جمله کوتاه.
         options: { minlength: 10, maxlength: 300 }
       - name: cover
         label: تصویر اصلی
         type: image
         required: true
-        options:
-          path: works
-          extensions: [jpg, jpeg, png, webp]
+        options: { path: works, extensions: [jpg, jpeg, png, webp] }
       - name: cover_alt
         label: توضیح تصویر اصلی
         type: string
         required: true
-        description: شرح کوتاه و روشن از آنچه در تصویر دیده می‌شود.
+        description: شرح کوتاه آنچه در تصویر دیده می‌شود.
       - name: gallery
         label: گالری تصاویر
         type: image
@@ -68,7 +61,7 @@ content:
       - name: video
         label: لینک ویدئو
         type: string
-        description: اختیاری. لینک کامل ویدئو را از هر سرویس قابل دسترس وارد کنید.
+        description: اختیاری؛ لینک کامل ویدئو.
       - { name: featured, label: نمایش در صفحه اصلی, type: boolean }
       - name: body
         label: متن کامل
@@ -81,15 +74,14 @@ content:
     type: collection
     path: _notes
     filename: "{fields.slug}.md"
-    view:
-      fields: [title, date]
+    view: { fields: [title, date] }
     fields:
       - { name: title, label: عنوان, type: string, required: true }
       - name: slug
         label: نام فنی نشانی
         type: string
         required: true
-        description: فقط حروف کوچک انگلیسی، عدد و خط تیره. نمونه note-001
+        description: فقط حروف کوچک انگلیسی، عدد و خط تیره؛ مانند note-001
         pattern:
           regex: "^[a-z0-9-]+$"
           message: فقط حروف کوچک انگلیسی، عدد و خط تیره مجاز است.
@@ -97,13 +89,8 @@ content:
       - name: image
         label: تصویر اختیاری
         type: image
-        options:
-          path: notes
-          extensions: [jpg, jpeg, png, webp]
-      - name: image_alt
-        label: توضیح تصویر
-        type: string
-        description: اگر تصویری اضافه شد، آن را کوتاه و روشن توصیف کنید.
+        options: { path: notes, extensions: [jpg, jpeg, png, webp] }
+      - { name: image_alt, label: توضیح تصویر, type: string }
       - name: body
         label: متن
         type: rich-text

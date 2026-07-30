@@ -1,0 +1,8 @@
+---
+layout: default
+title: یادداشت‌ها
+---
+<div id="wrapper" class="subpage-wrapper">
+  <header id="header" class="site-nav"><h1><a href="{{ '/' | relative_url }}"><strong>{{ site.title }}</strong></a></h1><nav><ul><li><a href="{{ '/works/' | relative_url }}">آثار</a></li><li><a href="{{ '/about/' | relative_url }}">درباره</a></li></ul></nav></header>
+  <main class="content-page reading-page"><header class="content-head"><p class="meta">دفتر</p><h1>یادداشت‌ها</h1></header><div class="notes-list">{% assign notes=site.notes | sort:'date' | reverse %}{% for note in notes %}<a href="{{ note.url | relative_url }}"><span>{{ note.title }}</span><time>{{ note.date | date:'%Y/%m/%d' }}</time></a>{% else %}<p>هنوز یادداشتی منتشر نشده است.</p>{% endfor %}</div></main>
+</div>
