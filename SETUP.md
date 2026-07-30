@@ -1,5 +1,5 @@
-# Install
+# نصب نسخه فارسی نهایی
 
-Upload all files and folders in this package to the root of the `vahidalimardani-art.github.io` repository, replacing existing files when names match. Delete any obsolete `content/` test folder. Keep GitHub Pages set to `main` and `/ (root)`.
+تمام فایل‌ها و پوشه‌های این بسته را در ریشه مخزن `vahidalimardani-art.github.io` بارگذاری کنید و فایل‌های همنام قبلی را جایگزین کنید. تنظیم GitHub Pages باید روی شاخه `main` و پوشه `/ (root)` باقی بماند.
 
-After upload, Pages CMS continues to edit `_works/`, `_notes/`, and `media/`.
+محتوای جدید از طریق Pages CMS در پوشه‌های `_works`، `_notes` و `media` ذخیره می‌شود. فیلد قدیمی `aparat` در آثار قبلی همچنان پشتیبانی می‌شود، اما آثار جدید از فیلد عمومی `video` استفاده می‌کنند.

@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Works
+title: آثار
 ---
-<section class="shell intro"><p class="eyebrow">Archive</p><h1>Works</h1></section>
+<section class="shell intro"><p class="eyebrow">آرشیو</p><h1>آثار</h1></section>
 <section class="shell section"><div class="work-grid">
 {% assign works = site.works | sort: 'date' | reverse %}
 {% for work in works %}<article class="card"><a href="{{ work.url | relative_url }}">
 {% if work.cover %}<img src="{{ work.cover | relative_url }}" alt="{{ work.cover_alt | escape }}" loading="lazy">{% endif %}
-<p class="meta">{{ work.category }} · {{ work.date | date: '%Y' }}</p><h2>{{ work.title }}</h2><p>{{ work.summary }}</p></a></article>
-{% else %}<p class="empty">No works published yet.</p>{% endfor %}
+<p class="meta">{{ work.category }}{% if work.date %} · {{ work.date | date: '%Y' }}{% endif %}</p><h2>{{ work.title }}</h2><p>{{ work.summary }}</p></a></article>
+{% else %}<p class="empty">هنوز اثری منتشر نشده است.</p>{% endfor %}
 </div></section>

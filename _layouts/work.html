@@ -3,17 +3,18 @@ layout: default
 ---
 <article class="work-page shell">
   <header class="intro narrow">
-    <p class="meta">{{ page.category }}{% if page.date %} · {{ page.date | date: '%Y' }}{% endif %}</p>
+    <p class="meta">{{ page.category }}{% if page.date %}<span aria-hidden="true"> · </span>{{ page.date | date: '%Y' }}{% endif %}</p>
     <h1>{{ page.title }}</h1>
     {% if page.summary %}<p class="lead">{{ page.summary }}</p>{% endif %}
   </header>
   {% if page.cover %}<figure class="hero"><img src="{{ page.cover | relative_url }}" alt="{{ page.cover_alt | escape }}"></figure>{% endif %}
   <section class="prose narrow">{{ content }}</section>
   {% if page.gallery %}
-  <section class="gallery" aria-label="Image gallery">
-    {% for image in page.gallery %}<figure><img src="{{ image | relative_url }}" alt="Additional image from {{ page.title | escape }}" loading="lazy"></figure>{% endfor %}
+  <section class="gallery" aria-label="گالری تصاویر">
+    {% for image in page.gallery %}<figure><img src="{{ image | relative_url }}" alt="تصویری دیگر از اثر {{ page.title | escape }}" loading="lazy"></figure>{% endfor %}
   </section>
   {% endif %}
-  {% if page.aparat %}<p class="video-link"><a href="{{ page.aparat | escape }}" rel="noopener">Watch on Aparat ↗</a></p>{% endif %}
-  <p class="back"><a href="{{ '/works/' | relative_url }}">← All works</a></p>
+  {% assign video_url = page.video | default: page.aparat %}
+  {% if video_url %}<p class="video-link"><a href="{{ video_url | escape }}" rel="noopener">تماشای ویدئو <span aria-hidden="true">↗</span></a></p>{% endif %}
+  <p class="back"><a href="{{ '/works/' | relative_url }}">بازگشت به همه آثار</a></p>
 </article>

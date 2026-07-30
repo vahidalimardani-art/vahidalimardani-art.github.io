@@ -1,5 +1,5 @@
-# Vahid Alimardani artist site
+# وب‌سایت هنری وحید علیمردانی
 
-Public site: https://vahidalimardani-art.github.io/
+وب‌سایت عمومی: https://vahidalimardani-art.github.io/
 
-Content is managed through Pages CMS.
+محتوا از طریق Pages CMS مدیریت می‌شود.

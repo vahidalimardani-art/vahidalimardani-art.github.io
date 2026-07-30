@@ -1,7 +1,9 @@
-title: Vahid Alimardani
-description: Works, images, films, and notes.
+title: وحید علیمردانی
+description: آثار، تصاویر، فیلم‌ها و یادداشت‌های وحید علیمردانی
 url: "https://vahidalimardani-art.github.io"
 baseurl: ""
+lang: fa
+direction: rtl
 markdown: kramdown
 collections:
   works:

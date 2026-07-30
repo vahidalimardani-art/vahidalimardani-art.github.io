@@ -1,13 +1,13 @@
 ---
 layout: default
-title: About
-description: About Vahid Alimardani.
+title: درباره
+description: درباره وحید علیمردانی
 ---
 <section class="narrow intro">
-<p class="eyebrow">About</p>
-<h1>Vahid Alimardani</h1>
+<p class="eyebrow">درباره</p>
+<h1>وحید علیمردانی</h1>
 </section>
 <section class="narrow prose">
-<p>This is an independent archive of works, images, films, and notes.</p>
-<p>Replace this text with Vahid's own short introduction and preferred contact information.</p>
+<p>این وب‌سایت آرشیوی مستقل از آثار، تصاویر، فیلم‌ها و یادداشت‌های وحید علیمردانی است.</p>
+<p>این متن را با معرفی کوتاه خود وحید و راه ارتباطی موردنظر او جایگزین کنید.</p>
 </section>
