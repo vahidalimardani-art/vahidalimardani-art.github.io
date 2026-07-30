@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ content | strip_html | strip_newlines | truncate: 160 | escape }}">
+
+  {{ '/assets/css/style.css' | relative_url }}
+</head>
+
+<body>
+  <header class="site-header">
+    {{ '/' | relative_url }}
+      {{ site.title }}
+    </a>
+
+    <nav aria-label="Main navigation">
+      {{ '/works/' | relative_url }}Works</a>
+      {{ '/notes/' | relative_url }}Notes</a>
+      {{ '/about/' | relative_url }}About</a>
+    </nav>
+  </header>
+
+  <main class="note-page">
+    <article>
+      <header class="note-header">
+        {% if page.date %}
+          <time datetime="{{ page.date | date: '%Y-%m-%d' }}">
+            {{ page.date | date: "%-d %B %Y" }}
+          </time>
+        {% endif %}
+
+        <h1>{{ page.title }}</h1>
+      </header>
+
+      {% if page.image %}
+        <figure class="note-image">
+          {{ page.image | relative_url }}
+        </figure>
+      {% endif %}
+
+      <section class="note-content">
+        {{ content }}
+      </section>
+    </article>
+
+    <nav class="back-link" aria-label="Return to notes">
+      {{ '/notes/' | relative_url }}← All notes</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <p>© {{ site.time | date: "%Y" }} {{ site.title }}</p>
+  </footer>
+</body>
+</html>
