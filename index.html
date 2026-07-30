@@ -1,14 +1,30 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Coming Soon</title>
-</head>
-<body>
-  <main>
-    <h1>Coming Soon</h1>
-    <p>An independent collection of works, images, films, and notes.</p>
-  </main>
-</body>
-</html>
+---
+layout: default
+title: Home
+---
+<section class="home-hero shell">
+  <p class="eyebrow">Independent artist</p>
+  <h1>Works, images,<br>films and notes.</h1>
+  <p class="lead">An evolving archive by Vahid Alimardani.</p>
+</section>
+<section class="shell section">
+  <div class="section-head"><h2>Selected works</h2><a href="{{ '/works/' | relative_url }}">View all</a></div>
+  <div class="work-grid">
+    {% assign featured = site.works | where: 'featured', true | sort: 'date' | reverse %}
+    {% assign shown = featured | slice: 0, 6 %}
+    {% for work in shown %}
+      <article class="card"><a href="{{ work.url | relative_url }}">
+        {% if work.cover %}<img src="{{ work.cover | relative_url }}" alt="{{ work.cover_alt | escape }}" loading="lazy">{% endif %}
+        <p class="meta">{{ work.category }} · {{ work.date | date: '%Y' }}</p><h3>{{ work.title }}</h3><p>{{ work.summary }}</p>
+      </a></article>
+    {% else %}<p class="empty">Selected works will appear here.</p>{% endfor %}
+  </div>
+</section>
+<section class="shell section">
+  <div class="section-head"><h2>Recent notes</h2><a href="{{ '/notes/' | relative_url }}">View all</a></div>
+  <div class="note-list">
+    {% assign recent_notes = site.notes | sort: 'date' | reverse %}
+    {% for note in recent_notes limit: 5 %}<a href="{{ note.url | relative_url }}"><span>{{ note.title }}</span><time>{{ note.date | date: '%-d %b %Y' }}</time></a>
+    {% else %}<p class="empty">Notes will appear here.</p>{% endfor %}
+  </div>
+</section>

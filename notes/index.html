@@ -1,0 +1,10 @@
+---
+layout: default
+title: Notes
+---
+<section class="narrow intro"><p class="eyebrow">Journal</p><h1>Notes</h1></section>
+<section class="narrow section"><div class="note-list">
+{% assign notes = site.notes | sort: 'date' | reverse %}
+{% for note in notes %}<a href="{{ note.url | relative_url }}"><span>{{ note.title }}</span><time>{{ note.date | date: '%-d %b %Y' }}</time></a>
+{% else %}<p class="empty">No notes published yet.</p>{% endfor %}
+</div></section>
