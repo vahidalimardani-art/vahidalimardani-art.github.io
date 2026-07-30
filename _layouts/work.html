@@ -1,20 +1,37 @@
 ---
 layout: default
 ---
-<article class="work-page shell">
-  <header class="intro narrow">
-    <p class="meta">{{ page.category }}{% if page.date %}<span aria-hidden="true"> · </span>{{ page.date | date: '%Y' }}{% endif %}</p>
+<article class="work-page">
+  <header class="work-intro page-shell">
+    <div class="work-kicker">
+      <span>{{ page.category }}</span>
+      {% if page.date %}<time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y' }}</time>{% endif %}
+    </div>
     <h1>{{ page.title }}</h1>
-    {% if page.summary %}<p class="lead">{{ page.summary }}</p>{% endif %}
+    {% if page.summary %}<p class="work-summary">{{ page.summary }}</p>{% endif %}
   </header>
-  {% if page.cover %}<figure class="hero"><img src="{{ page.cover | relative_url }}" alt="{{ page.cover_alt | escape }}"></figure>{% endif %}
-  <section class="prose narrow">{{ content }}</section>
+
+  {% if page.cover %}
+  <figure class="work-hero wide-shell">
+    <img src="{{ page.cover | relative_url }}" alt="{{ page.cover_alt | escape }}">
+  </figure>
+  {% endif %}
+
+  <section class="prose reading-shell">{{ content }}</section>
+
   {% if page.gallery %}
-  <section class="gallery" aria-label="گالری تصاویر">
-    {% for image in page.gallery %}<figure><img src="{{ image | relative_url }}" alt="تصویری دیگر از اثر {{ page.title | escape }}" loading="lazy"></figure>{% endfor %}
+  <section class="art-gallery wide-shell" aria-label="گالری تصاویر">
+    {% for image in page.gallery %}
+    <figure class="gallery-item gallery-item-{{ forloop.index | modulo: 5 }}">
+      <img src="{{ image | relative_url }}" alt="تصویری دیگر از اثر {{ page.title | escape }}" loading="lazy">
+    </figure>
+    {% endfor %}
   </section>
   {% endif %}
+
   {% assign video_url = page.video | default: page.aparat %}
-  {% if video_url %}<p class="video-link"><a href="{{ video_url | escape }}" rel="noopener">تماشای ویدئو <span aria-hidden="true">↗</span></a></p>{% endif %}
-  <p class="back"><a href="{{ '/works/' | relative_url }}">بازگشت به همه آثار</a></p>
+  <div class="work-actions reading-shell">
+    {% if video_url %}<a class="video-button" href="{{ video_url | escape }}" rel="noopener">تماشای ویدئو <span aria-hidden="true">↗</span></a>{% endif %}
+    <a class="text-link" href="{{ '/works/' | relative_url }}">بازگشت به همه آثار</a>
+  </div>
 </article>

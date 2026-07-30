@@ -2,9 +2,9 @@
 layout: default
 title: یادداشت‌ها
 ---
-<section class="narrow intro"><p class="eyebrow">دفتر</p><h1>یادداشت‌ها</h1></section>
-<section class="narrow section"><div class="note-list">
+<header class="archive-hero reading-shell"><p class="overline">دفتر</p><h1>یادداشت‌ها</h1><p>فکرها، مشاهده‌ها و نوشته‌های در حال شکل‌گیری</p></header>
+<section class="reading-shell note-list large-list">
 {% assign notes = site.notes | sort: 'date' | reverse %}
 {% for note in notes %}<a href="{{ note.url | relative_url }}"><span>{{ note.title }}</span><time>{{ note.date | date: '%Y/%m/%d' }}</time></a>
-{% else %}<p class="empty">هنوز یادداشتی منتشر نشده است.</p>{% endfor %}
-</div></section>
+{% else %}<p class="empty-state">هنوز یادداشتی منتشر نشده است.</p>{% endfor %}
+</section>

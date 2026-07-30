@@ -1,12 +1,12 @@
 ---
 layout: default
 ---
-<article class="note-page narrow">
-  <header class="intro">
-    {% if page.date %}<time class="meta" datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y/%m/%d' }}</time>{% endif %}
+<article class="note-page reading-shell">
+  <header class="note-intro">
+    {% if page.date %}<time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y/%m/%d' }}</time>{% endif %}
     <h1>{{ page.title }}</h1>
   </header>
   {% if page.image %}<figure class="note-image"><img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}"></figure>{% endif %}
   <section class="prose">{{ content }}</section>
-  <p class="back"><a href="{{ '/notes/' | relative_url }}">بازگشت به همه یادداشت‌ها</a></p>
+  <div class="work-actions"><a class="text-link" href="{{ '/notes/' | relative_url }}">بازگشت به همه یادداشت‌ها</a></div>
 </article>

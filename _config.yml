@@ -5,6 +5,7 @@ baseurl: ""
 lang: fa
 direction: rtl
 markdown: kramdown
+permalink: pretty
 collections:
   works:
     output: true
@@ -17,4 +18,7 @@ defaults:
     values: { layout: work }
   - scope: { path: "", type: notes }
     values: { layout: note }
-exclude: [README.md, SETUP.md]
+exclude:
+  - README.md
+  - INSTALL.md
+  - CLEANUP.md

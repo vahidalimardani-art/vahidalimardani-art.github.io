@@ -2,29 +2,43 @@
 layout: default
 title: خانه
 ---
-<section class="home-hero shell">
-  <p class="eyebrow">هنرمند مستقل</p>
-  <h1>آثار، تصویرها،<br>فیلم‌ها و یادداشت‌ها</h1>
-  <p class="lead">آرشیوی در حال شکل‌گیری از وحید علیمردانی</p>
+{% assign featured = site.works | where: 'featured', true | sort: 'date' | reverse %}
+{% assign latest_featured = featured | first %}
+<section class="home-hero page-shell">
+  <div class="hero-copy">
+    <p class="overline">هنرمند مستقل</p>
+    <h1>وحید<br>علیمردانی</h1>
+    <p class="hero-statement">آثار، تصویرها، فیلم‌ها و یادداشت‌ها</p>
+  </div>
+  {% if latest_featured and latest_featured.cover %}
+  <a class="featured-visual" href="{{ latest_featured.url | relative_url }}">
+    <img src="{{ latest_featured.cover | relative_url }}" alt="{{ latest_featured.cover_alt | escape }}">
+    <span class="featured-caption"><b>{{ latest_featured.title }}</b><small>{{ latest_featured.category }}</small></span>
+  </a>
+  {% else %}
+  <div class="featured-placeholder"><span>آرشیو در حال شکل‌گیری است</span></div>
+  {% endif %}
 </section>
-<section class="shell section">
-  <div class="section-head"><h2>آثار منتخب</h2><a href="{{ '/works/' | relative_url }}">همه آثار</a></div>
-  <div class="work-grid">
-    {% assign featured = site.works | where: 'featured', true | sort: 'date' | reverse %}
-    {% assign shown = featured | slice: 0, 6 %}
-    {% for work in shown %}
-      <article class="card"><a href="{{ work.url | relative_url }}">
-        {% if work.cover %}<img src="{{ work.cover | relative_url }}" alt="{{ work.cover_alt | escape }}" loading="lazy">{% endif %}
-        <p class="meta">{{ work.category }}{% if work.date %} · {{ work.date | date: '%Y' }}{% endif %}</p><h3>{{ work.title }}</h3><p>{{ work.summary }}</p>
-      </a></article>
-    {% else %}<p class="empty">آثار منتخب در اینجا نمایش داده می‌شوند.</p>{% endfor %}
+
+<section class="section-block wide-shell">
+  <header class="section-title"><h2>آثار منتخب</h2><a href="{{ '/works/' | relative_url }}">همه آثار</a></header>
+  <div class="editorial-grid">
+    {% for work in featured offset:1 limit:6 %}
+    <article class="art-card art-card-{{ forloop.index }}"><a href="{{ work.url | relative_url }}">
+      {% if work.cover %}<img src="{{ work.cover | relative_url }}" alt="{{ work.cover_alt | escape }}" loading="lazy">{% endif %}
+      <div><p class="card-meta">{{ work.category }}{% if work.date %} · {{ work.date | date: '%Y' }}{% endif %}</p><h3>{{ work.title }}</h3><p>{{ work.summary }}</p></div>
+    </a></article>
+    {% else %}
+      {% if latest_featured %}<p class="empty-state">با انتشار آثار بیشتر، این بخش کامل می‌شود.</p>{% else %}<p class="empty-state">آثار منتخب در اینجا نمایش داده می‌شوند.</p>{% endif %}
+    {% endfor %}
   </div>
 </section>
-<section class="shell section">
-  <div class="section-head"><h2>یادداشت‌های تازه</h2><a href="{{ '/notes/' | relative_url }}">همه یادداشت‌ها</a></div>
+
+<section class="notes-strip wide-shell">
+  <header class="section-title"><h2>یادداشت‌های تازه</h2><a href="{{ '/notes/' | relative_url }}">همه یادداشت‌ها</a></header>
   <div class="note-list">
     {% assign recent_notes = site.notes | sort: 'date' | reverse %}
-    {% for note in recent_notes limit: 5 %}<a href="{{ note.url | relative_url }}"><span>{{ note.title }}</span><time>{{ note.date | date: '%Y/%m/%d' }}</time></a>
-    {% else %}<p class="empty">یادداشت‌ها در اینجا نمایش داده می‌شوند.</p>{% endfor %}
+    {% for note in recent_notes limit:5 %}<a href="{{ note.url | relative_url }}"><span>{{ note.title }}</span><time>{{ note.date | date: '%Y/%m/%d' }}</time></a>
+    {% else %}<p class="empty-state">یادداشت‌ها در اینجا نمایش داده می‌شوند.</p>{% endfor %}
   </div>
 </section>
