@@ -19,3 +19,4 @@ jobs:
           ruby-version: "3.3"
       - run: bundle install
       - run: bundle exec jekyll build --trace
+      - run: ruby script/verify_site.rb
