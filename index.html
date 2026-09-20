@@ -20,5 +20,5 @@ title: خانه
     <h2 id="selected-works">{% if featured_works.size > 0 %}گزیده آثار{% else %}آثار{% endif %}</h2>
     <a href="{{ '/works/' | relative_url }}">همه آثار</a>
   </div>
-  {% include artwork-grid.html items=displayed_works eager=true empty="هنوز اثری برای نمایش منتشر نشده است." %}
+  {% include artwork-grid.html items=displayed_works prioritize_first=true empty="هنوز اثری برای نمایش منتشر نشده است." %}
 </section>

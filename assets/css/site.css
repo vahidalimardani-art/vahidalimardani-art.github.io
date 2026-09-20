@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../fonts/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../fonts/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 :root {
   --paper: #f4f3ef;
   --ink: #191918;
@@ -10,7 +24,7 @@
 }
 * { box-sizing: border-box; }
 html { background: var(--paper); color: var(--ink); direction: rtl; scroll-behavior: smooth; }
-body { margin: 0; font-family: Vazirmatn, "Noto Sans Arabic", Tahoma, Arial, sans-serif; font-size: 16px; line-height: 1.75; text-align: right; }
+body { margin: 0; font-family: "Vazirmatn", Tahoma, Arial, sans-serif; font-size: 16px; line-height: 1.75; text-align: right; }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .22em; }
 a:hover { color: var(--focus); }
@@ -33,8 +47,8 @@ a:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
 .section-heading a, .return-link a, .work-extra a, .contact-block a, .notes-list a { text-decoration: none; }
 .artwork-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.25rem, 2.5vw, 2.6rem); padding-top: clamp(1.25rem, 2.5vw, 2.6rem); }
 .artwork-card__link { display: block; text-decoration: none; }
-.artwork-card__image { aspect-ratio: 4 / 5; overflow: hidden; background: var(--panel); }
-.artwork-card__image img { width: 100%; height: 100%; object-fit: contain; }
+.artwork-card__image { background: var(--panel); }
+.artwork-card__image img { width: 100%; height: auto; }
 .artwork-card__meta { padding-top: .8rem; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .25rem 1rem; }
 .artwork-card h3 { margin: 0; font-size: 1rem; font-weight: 700; }
 .artwork-card p { display: flex; gap: .55rem; margin: 0; color: var(--muted); font-size: .85rem; }
@@ -101,7 +115,6 @@ a:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
   .site-nav { gap: 1rem; }
   .home-intro { margin-inline: auto; padding-block: 3.5rem 1.5rem; }
   .artwork-grid { grid-template-columns: 1fr; gap: 2.4rem; }
-  .artwork-card__image { aspect-ratio: 4 / 5; }
   .work-gallery { grid-template-columns: 1fr; }
   .work-gallery figure:nth-child(3n) { grid-column: auto; }
   .notes-list a { align-items: flex-start; flex-direction: column; gap: .2rem; }

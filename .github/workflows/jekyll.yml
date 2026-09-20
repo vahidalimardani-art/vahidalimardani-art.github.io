@@ -20,3 +20,5 @@ jobs:
       - run: bundle install
       - run: bundle exec jekyll build --trace
       - run: ruby script/verify_site.rb
+      - run: ruby script/verify_pages_cms_schema.rb
+      - run: ruby script/verify_publication_gate.rb
