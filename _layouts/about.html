@@ -7,7 +7,7 @@ layout: default
     <p class="eyebrow">درباره</p>
     <h1>{{ info.artist_name | default: page.title }}</h1>
   </header>
-  {% if info.portrait %}
+  {% if info.portrait != blank %}
     <figure class="about-portrait"><img src="{{ info.portrait | relative_url }}" alt="{{ info.artist_name | escape }}"></figure>
   {% endif %}
   <section class="prose">{{ content }}</section>

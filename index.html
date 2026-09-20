@@ -10,10 +10,12 @@ title: خانه
   {% assign displayed_works = public_works %}
 {% endif %}
 
-<section class="home-intro">
-  {% if site.data.site.homepage_title != "" %}<h1>{{ site.data.site.homepage_title }}</h1>{% endif %}
-  {% if site.data.site.homepage_intro != "" %}<p>{{ site.data.site.homepage_intro }}</p>{% endif %}
-</section>
+{% if site.data.site.homepage_title != blank or site.data.site.homepage_intro != blank %}
+  <section class="home-intro">
+    {% if site.data.site.homepage_title != blank %}<h1>{{ site.data.site.homepage_title }}</h1>{% endif %}
+    {% if site.data.site.homepage_intro != blank %}<p>{{ site.data.site.homepage_intro }}</p>{% endif %}
+  </section>
+{% endif %}
 
 <section class="home-works" aria-labelledby="selected-works">
   <div class="section-heading">
