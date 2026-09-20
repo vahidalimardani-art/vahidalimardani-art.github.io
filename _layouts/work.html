@@ -9,15 +9,15 @@ layout: default
     </p>
     <h1>{{ page.title }}</h1>
     {% if page.summary %}<p class="work-page__summary">{{ page.summary }}</p>{% endif %}
-    {% if page.dimensions or page.location %}
+    {% if page.dimensions != blank or page.location != blank %}
       <dl class="work-facts">
-        {% if page.dimensions %}<div><dt>ابعاد</dt><dd>{{ page.dimensions }}</dd></div>{% endif %}
-        {% if page.location %}<div><dt>مکان / نمایشگاه</dt><dd>{{ page.location }}</dd></div>{% endif %}
+        {% if page.dimensions != blank %}<div><dt>ابعاد</dt><dd>{{ page.dimensions }}</dd></div>{% endif %}
+        {% if page.location != blank %}<div><dt>مکان / نمایشگاه</dt><dd>{{ page.location }}</dd></div>{% endif %}
       </dl>
     {% endif %}
   </header>
 
-  {% if page.cover %}
+  {% if page.cover != blank %}
     <figure class="work-cover">
       <img src="{{ page.cover | relative_url }}" alt="{{ page.cover_alt | default: page.title | escape }}">
     </figure>
@@ -25,7 +25,7 @@ layout: default
 
   {% if content != "" %}<section class="prose work-page__text">{{ content }}</section>{% endif %}
 
-  {% if page.gallery %}
+  {% if page.gallery != blank %}
     <section class="work-gallery" aria-label="تصاویر اثر">
       {% for image in page.gallery %}
         <figure><img src="{{ image | relative_url }}" alt="تصویری از {{ page.title | escape }}" loading="lazy"></figure>
@@ -33,12 +33,12 @@ layout: default
     </section>
   {% endif %}
 
-  {% if page.credits or page.video or page.external_url %}
+  {% if page.credits != blank or page.video != blank or page.external_url != blank %}
     <aside class="work-extra">
-      {% if page.credits %}<p>{{ page.credits }}</p>{% endif %}
+      {% if page.credits != blank %}<p>{{ page.credits }}</p>{% endif %}
       <div class="work-extra__links">
-        {% if page.video %}<a href="{{ page.video | escape }}" target="_blank" rel="noopener">تماشای ویدئو</a>{% endif %}
-        {% if page.external_url %}<a href="{{ page.external_url | escape }}" target="_blank" rel="noopener">لینک بیرونی</a>{% endif %}
+        {% if page.video != blank %}<a href="{{ page.video | escape }}" target="_blank" rel="noopener">تماشای ویدئو</a>{% endif %}
+        {% if page.external_url != blank %}<a href="{{ page.external_url | escape }}" target="_blank" rel="noopener">لینک بیرونی</a>{% endif %}
       </div>
     </aside>
   {% endif %}
