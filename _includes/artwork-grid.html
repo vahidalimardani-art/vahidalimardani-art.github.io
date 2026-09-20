@@ -1,0 +1,13 @@
+{% if include.items.size > 0 %}
+  <div class="artwork-grid">
+    {% for work in include.items %}
+      {% if include.prioritize_first and forloop.first %}
+        {% include artwork-card.html work=work eager=true %}
+      {% else %}
+        {% include artwork-card.html work=work %}
+      {% endif %}
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="empty-state">{{ include.empty }}</p>
+{% endif %}

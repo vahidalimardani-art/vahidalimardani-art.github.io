@@ -1,0 +1,13 @@
+{% assign info = site.data.site %}
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="{{ '/' | relative_url }}" aria-label="خانه">
+      {{ info.artist_name | default: site.title }}
+    </a>
+    <nav class="site-nav" aria-label="ناوبری اصلی">
+      <a href="{{ '/works/' | relative_url }}">آثار</a>
+      <a href="{{ '/notes/' | relative_url }}">یادداشت‌ها</a>
+      <a href="{{ '/about/' | relative_url }}">درباره</a>
+    </nav>
+  </div>
+</header>

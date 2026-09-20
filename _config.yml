@@ -1,14 +1,11 @@
 title: وحید علیمردانی
-description: آثار، تصاویر، فیلم‌ها و یادداشت‌های وحید علیمردانی
+description: آرشیو آثار، تصاویر، فیلم‌ها و یادداشت‌های وحید علیمردانی
 url: "https://vahidalimardani-art.github.io"
 baseurl: ""
 lang: fa
 direction: rtl
 markdown: kramdown
 permalink: pretty
-remote_theme: rampatra/photography
-plugins:
-  - jekyll-remote-theme
 collections:
   works:
     output: true
@@ -21,7 +18,7 @@ defaults:
     values: { layout: work }
   - scope: { path: "", type: notes }
     values: { layout: note }
+  - scope: { path: about }
+    values: { layout: about }
 exclude:
   - README.md
-  - INSTALL.md
-  - THEME-NOTICE.md

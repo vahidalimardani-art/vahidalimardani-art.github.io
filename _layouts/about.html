@@ -1,0 +1,25 @@
+---
+layout: default
+---
+{% assign info = site.data.site %}
+<article class="about-page">
+  <header class="page-heading">
+    <p class="eyebrow">درباره</p>
+    <h1>{{ info.artist_name | default: page.title }}</h1>
+  </header>
+  {% if info.portrait %}
+    <figure class="about-portrait"><img src="{{ info.portrait | relative_url }}" alt="{{ info.artist_name | escape }}"></figure>
+  {% endif %}
+  <section class="prose">{{ content }}</section>
+  {% if info.email != "" or info.social_links.size > 0 %}
+    <section class="contact-block" aria-labelledby="contact-title">
+      <h2 id="contact-title">ارتباط</h2>
+      {% if info.email != "" %}<p><a href="mailto:{{ info.email | escape }}">{{ info.email }}</a></p>{% endif %}
+      {% if info.social_links.size > 0 %}
+        <ul>
+          {% for link in info.social_links %}{% if link.url != "" %}<li><a href="{{ link.url | escape }}" target="_blank" rel="noopener">{{ link.label }}</a></li>{% endif %}{% endfor %}
+        </ul>
+      {% endif %}
+    </section>
+  {% endif %}
+</article>
