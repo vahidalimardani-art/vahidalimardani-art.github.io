@@ -63,5 +63,7 @@ unless home_images.empty?
   end
 end
 
+errors << "existing /works/lim-v2/ route was not generated" unless root.join("works/lim-v2/index.html").file?
+
 abort(errors.join("\n")) unless errors.empty?
 puts "Verified #{Dir.glob("_site/**/*.html").length} HTML files, local links, RTL document roots, local Vazirmatn assets, and artwork loading behavior."
