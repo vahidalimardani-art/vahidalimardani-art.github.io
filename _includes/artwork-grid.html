@@ -1,0 +1,9 @@
+{% if include.items.size > 0 %}
+  <div class="artwork-grid">
+    {% for work in include.items %}
+      {% include artwork-card.html work=work eager=include.eager %}
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="empty-state">{{ include.empty }}</p>
+{% endif %}

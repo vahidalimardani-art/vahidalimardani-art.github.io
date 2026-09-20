@@ -1,0 +1,17 @@
+{% assign info = site.data.site %}
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>
+      <p class="site-footer__name">{{ info.artist_name | default: site.title }}</p>
+      {% if info.footer_text != "" %}<p>{{ info.footer_text }}</p>{% endif %}
+      {% if info.location != "" %}<p>{{ info.location }}</p>{% endif %}
+    </div>
+    <div class="site-footer__links">
+      {% if info.email != "" %}<a href="mailto:{{ info.email | escape }}">ایمیل</a>{% endif %}
+      {% for link in info.social_links %}
+        {% if link.url != "" %}<a href="{{ link.url | escape }}" rel="noopener" target="_blank">{{ link.label }}</a>{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <p class="site-footer__copyright">© {{ site.time | date: "%Y" }} {{ info.artist_name | default: site.title }}</p>
+</footer>

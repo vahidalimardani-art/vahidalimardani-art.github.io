@@ -2,32 +2,23 @@
 layout: default
 title: خانه
 ---
-<div id="wrapper">
-  <header id="header" class="site-nav">
-    <h1><a href="{{ '/' | relative_url }}"><strong>{{ site.title }}</strong> <span>آرشیو آثار</span></a></h1>
-    <nav><ul><li><a href="{{ '/works/' | relative_url }}">آثار</a></li><li><a href="{{ '/notes/' | relative_url }}">یادداشت‌ها</a></li><li><a href="#footer">درباره</a></li></ul></nav>
-  </header>
+{% assign public_works = site.works | where_exp: "work", "work.published != false" | sort: "date" | reverse %}
+{% assign featured_works = public_works | where: "featured", true %}
+{% if featured_works.size > 0 %}
+  {% assign displayed_works = featured_works %}
+{% else %}
+  {% assign displayed_works = public_works %}
+{% endif %}
 
-  <div id="main">
-    {% assign works = site.works | sort: 'date' | reverse %}
-    {% for work in works %}
-    <article class="thumb">
-      <a href="{{ work.cover | relative_url }}" class="image"><img src="{{ work.cover | relative_url }}" alt="{{ work.cover_alt | escape }}"></a>
-      <h2><a href="{{ work.url | relative_url }}">{{ work.title }}</a></h2>
-      <p>{{ work.summary }}</p>
-    </article>
-    {% else %}
-    <article class="thumb empty-thumb"><div class="empty-message">آثار در اینجا نمایش داده می‌شوند.</div></article>
-    {% endfor %}
+<section class="home-intro">
+  {% if site.data.site.homepage_title != "" %}<h1>{{ site.data.site.homepage_title }}</h1>{% endif %}
+  {% if site.data.site.homepage_intro != "" %}<p>{{ site.data.site.homepage_intro }}</p>{% endif %}
+</section>
+
+<section class="home-works" aria-labelledby="selected-works">
+  <div class="section-heading">
+    <h2 id="selected-works">{% if featured_works.size > 0 %}گزیده آثار{% else %}آثار{% endif %}</h2>
+    <a href="{{ '/works/' | relative_url }}">همه آثار</a>
   </div>
-
-  <footer id="footer" class="panel">
-    <div class="inner split">
-      <div>
-        <section><h2>{{ site.title }}</h2><p>آرشیو مستقل آثار، تصاویر، فیلم‌ها و یادداشت‌ها.</p></section>
-        <section class="footer-links"><a href="{{ '/works/' | relative_url }}">همه آثار</a><a href="{{ '/notes/' | relative_url }}">یادداشت‌ها</a><a href="{{ '/about/' | relative_url }}">درباره</a></section>
-        <p class="copyright">© {{ site.time | date: '%Y' }} {{ site.title }}. پایه طراحی: Photography / Multiverse.</p>
-      </div>
-    </div>
-  </footer>
-</div>
+  {% include artwork-grid.html items=displayed_works eager=true empty="هنوز اثری برای نمایش منتشر نشده است." %}
+</section>

@@ -2,7 +2,22 @@
 layout: default
 title: یادداشت‌ها
 ---
-<div id="wrapper" class="subpage-wrapper">
-  <header id="header" class="site-nav"><h1><a href="{{ '/' | relative_url }}"><strong>{{ site.title }}</strong></a></h1><nav><ul><li><a href="{{ '/works/' | relative_url }}">آثار</a></li><li><a href="{{ '/about/' | relative_url }}">درباره</a></li></ul></nav></header>
-  <main class="content-page reading-page"><header class="content-head"><p class="meta">دفتر</p><h1>یادداشت‌ها</h1></header><div class="notes-list">{% assign notes=site.notes | sort:'date' | reverse %}{% for note in notes %}<a href="{{ note.url | relative_url }}"><span>{{ note.title }}</span><time>{{ note.date | date:'%Y/%m/%d' }}</time></a>{% else %}<p>هنوز یادداشتی منتشر نشده است.</p>{% endfor %}</div></main>
-</div>
+{% assign public_notes = site.notes | where_exp: "note", "note.published != false" | sort: "date" | reverse %}
+<section class="notes-page">
+  <header class="page-heading">
+    <p class="eyebrow">دفتر</p>
+    <h1>یادداشت‌ها</h1>
+  </header>
+  {% if public_notes.size > 0 %}
+    <div class="notes-list">
+      {% for note in public_notes %}
+        <a href="{{ note.url | relative_url }}">
+          <span>{{ note.title }}</span>
+          {% if note.date %}<time dir="ltr">{{ note.date | date: "%Y/%m/%d" }}</time>{% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="empty-state">هنوز یادداشتی منتشر نشده است.</p>
+  {% endif %}
+</section>

@@ -1,0 +1,14 @@
+<article class="artwork-card">
+  <a class="artwork-card__link" href="{{ include.work.url | relative_url }}">
+    <div class="artwork-card__image">
+      <img src="{{ include.work.cover | relative_url }}" alt="{{ include.work.cover_alt | default: include.work.title | escape }}"{% unless include.eager %} loading="lazy"{% endunless %}>
+    </div>
+    <div class="artwork-card__meta">
+      <h3>{{ include.work.title }}</h3>
+      <p>
+        {% if include.work.date %}<span dir="ltr">{{ include.work.date | date: "%Y" }}</span>{% endif %}
+        {% if include.work.category %}<span>{{ include.work.category }}</span>{% endif %}
+      </p>
+    </div>
+  </a>
+</article>
